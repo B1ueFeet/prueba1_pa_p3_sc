@@ -1,4 +1,4 @@
-package com.example.demo.modelo;
+package com.example.demo.correccion.modelo;
 
 import java.math.BigDecimal;
 
@@ -9,25 +9,22 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cuenta_bancaria")
-public class CuentaBancaria {
+public class Cuenta {
+
 	@Column(name = "cuen_tipo")
 	private String tipo;
 
 	@Id
 	@Column(name = "cuen_numero")
 	private String numero;
-	
+
 	@Column(name = "cuen_saldo")
 	private BigDecimal saldo;
-	
+
 	@Column(name = "cuen_cedula")
 	private String cedulaP;
 
-	@Override
-	public String toString() {
-		return "CuentaBancaria [tipo=" + tipo + ", numero=" + numero + ", saldo=" + saldo + ", cedulaP=" + cedulaP
-				+ "]";
-	}
+	// SETTER & GETTER
 
 	public String getTipo() {
 		return tipo;
@@ -61,6 +58,10 @@ public class CuentaBancaria {
 		this.cedulaP = cedulaP;
 	}
 
-	
-	
+	// TO STRING
+	@Override
+	public String toString() {
+		return "Cuenta [tipo=" + tipo + ", numero=" + numero + ", saldo=" + saldo + ", cedulaP=" + cedulaP + "]";
+	}
+
 }

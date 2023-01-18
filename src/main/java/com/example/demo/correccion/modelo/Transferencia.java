@@ -1,4 +1,4 @@
-package com.example.demo.modelo;
+package com.example.demo.correccion.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -25,10 +25,10 @@ public class Transferencia {
 	private LocalDateTime fecha;
 
 	@Column(name = "tran_num_origen")
-	private String numOrigen;
+	private String numeroOrigen;
 
 	@Column(name = "tran_num_destino")
-	private String numDestino;
+	private String numeroDestino;
 
 	@Column(name = "tran_monto")
 	private BigDecimal monto;
@@ -36,11 +36,14 @@ public class Transferencia {
 	@Column(name = "tran_comision")
 	private BigDecimal comision;
 
+	// TO STRING
 	@Override
 	public String toString() {
-		return "Transferencia [id=" + id + ", fecha=" + fecha + ", numOrigen=" + numOrigen + ", numDestino="
-				+ numDestino + ", monto=" + monto + ", comision=" + comision + "]";
+		return "Transferencia [id=" + id + ", fecha=" + fecha + ", numeroOrigen=" + numeroOrigen + ", numeroDestino="
+				+ numeroDestino + ", monto=" + monto + ", comision=" + comision + "]";
 	}
+
+	// GETTER & SETTER
 
 	public Integer getId() {
 		return id;
@@ -58,20 +61,20 @@ public class Transferencia {
 		this.fecha = fecha;
 	}
 
-	public String getNumOrigen() {
-		return numOrigen;
+	public String getNumeroOrigen() {
+		return numeroOrigen;
 	}
 
-	public void setNumOrigen(String numOrigen) {
-		this.numOrigen = numOrigen;
+	public void setNumeroOrigen(String numeroOrigen) {
+		this.numeroOrigen = numeroOrigen;
 	}
 
-	public String getNumDestino() {
-		return numDestino;
+	public String getNumeroDestino() {
+		return numeroDestino;
 	}
 
-	public void setNumDestino(String numDestino) {
-		this.numDestino = numDestino;
+	public void setNumeroDestino(String numeroDestino) {
+		this.numeroDestino = numeroDestino;
 	}
 
 	public BigDecimal getMonto() {

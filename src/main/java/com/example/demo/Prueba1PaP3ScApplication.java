@@ -1,16 +1,15 @@
 package com.example.demo;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.modelo.CuentaBancaria;
-import com.example.demo.service.ICuentaBancariaService;
-import com.example.demo.service.ITransferenciaService;
+import com.example.demo.correccion.modelo.Cuenta;
+import com.example.demo.correccion.service.ICuentaService;
+import com.example.demo.correccion.service.ITransferenciaService;
 
 @SpringBootApplication
 public class Prueba1PaP3ScApplication implements CommandLineRunner {
@@ -21,7 +20,7 @@ public class Prueba1PaP3ScApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private ICuentaBancariaService cuentaBancariaService;
+	private ICuentaService cuentaService;
 	@Autowired
 	private ITransferenciaService transferenciaService;
 
@@ -31,25 +30,26 @@ public class Prueba1PaP3ScApplication implements CommandLineRunner {
 
 		// PARTE 1: CUENTAS BANCARIAS
 
-		CuentaBancaria bancaria1 = new CuentaBancaria();
-		bancaria1.setCedulaP("1717560930");
+		Cuenta bancaria1 = new Cuenta();
+		bancaria1.setCedulaP("171756093");
 		bancaria1.setNumero("2203103461");
 		bancaria1.setSaldo(new BigDecimal(3000));
 		bancaria1.setTipo("C"); // C = CORRIENTE | A = AHORRO
-		this.cuentaBancariaService.crear(bancaria1);
+		this.cuentaService.guardar(bancaria1);
 
-		CuentaBancaria bancaria2 = new CuentaBancaria();
+		Cuenta bancaria2 = new Cuenta();
 		bancaria2.setCedulaP("1717844466");
 		bancaria2.setNumero("2122456781");
 		bancaria2.setSaldo(new BigDecimal(7000));
 		bancaria2.setTipo("A"); // C = CORRIENTE | A = AHORRO
-		this.cuentaBancariaService.crear(bancaria2);
+		this.cuentaService.guardar(bancaria2);
 
 		
 		// PARTE 2: TRANSFERENCIA
 
-		this.transferenciaService.realizar("2122456783", "2203103465", new BigDecimal(100));
-
+		this.transferenciaService.realizar("2122456781", "2203103461", new BigDecimal(100));
+		
+		System.err.println("Saldo Cuenta Origen: "+this.cuentaService.encontrar("2122456781").getSaldo());
 	}
 
 }
